@@ -1,0 +1,83 @@
+
+/*内容区域*/
+.pug-content {}
+
+.pug-imgbox img {
+    max-width: 100%;
+}
+
+.pug-content .pug-wrapper {
+    max-width: 800px;
+    margin: 20px auto;
+}
+
+.pug-content .pug-tit h1 {
+    font-size: 2em;
+    font-weight: 400;
+}
+
+.pug-content .article-meta {
+    padding-top: 8px;
+    font-size: 14px;
+}
+
+.pug-content .article-meta .article-date {
+    margin-right: 20px;
+}
+
+.pug-content .pug-article-section {
+    margin-top: 20px;
+}
+
+.pug-content .pug-article-section h2 {
+    border-bottom: 1px solid #eaecef;
+    font-size: 22x;
+    padding-bottom: 10px;
+    margin-top: 10px;
+}
+
+.pug-content .pug-article-section h3 {
+    border-bottom: 1px solid #eaecef;
+    font-size: 18x;
+    padding-bottom: 10px;
+}
+
+.pug-content .pug-article-section h4 {
+    border-bottom: 1px solid #eaecef;
+    font-size: 16x;
+    padding-bottom: 10px;
+}
+
+.pug-content .pug-article-section h5 {
+    border-bottom: 1px solid #eaecef;
+    font-size: 14x;
+    padding-bottom: 10px;
+}
+
+.pug-content .pug-article-section h6 {
+    border-bottom: 1px solid #eaecef;
+    font-size: 12x;
+    padding-bottom: 10px;
+}
+
+.pug-content .pug-article-section blockquote {
+    background: #eee;
+    margin: 0;
+    padding: 0;
+    padding: 20px;
+    border-left: 6px solid rgb(18, 187, 18);
+}
+
+.pug-content .pug-article-section ul li {
+    list-style: disc;
+    padding: 3px 0;
+}
+
+.pug-content .pug-article-section ul li ul li {
+    list-style: circle;
+}
+
+.pug-content .pug-article-section pre {
+    color: #fff;
+    white-space: pre-wrap;
+}

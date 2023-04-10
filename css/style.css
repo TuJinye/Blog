@@ -1,0 +1,263 @@
+body {
+    font-size: 14px;
+    font-family: -apple-system, "Microsoft YaHei", "Helvetica Neue", Arial, "PingFang SC", "Hiragino Sans GB", "WenQuanYi Micro Hei", sans-serif;
+    line-height: 1.5;
+    word-wrap: break-word;
+    -webkit-text-size-adjust: none;
+    background: #f8f8f8;
+}
+
+.fl,
+.l {
+    float: left
+}
+
+.fr,
+.r {
+    float: right
+}
+
+.mt5 {
+    margin-top: 5px;
+}
+
+.mt10 {
+    margin-top: 10px;
+}
+
+.mt15 {
+    margin-top: 15px;
+}
+
+.mt20 {
+    margin-top: 20px;
+}
+
+.mt25 {
+    margin-top: 25px;
+}
+
+.mt30 {
+    margin-top: 30px;
+}
+
+.mt40 {
+    margin-top: 40px;
+}
+
+.mt45 {
+    margin-top: 45px;
+}
+
+.mt50 {
+    margin-top: 50px;
+}
+
+.clearfix::after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+a {
+    color: #333;
+    text-decoration: none;
+}
+
+img {
+    max-width: 100%;
+}
+
+.header {
+    background-image: url(/image/bg.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.header .logo {
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    z-index: 11;
+}
+
+.header .logo::after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.2);
+    height: 100%;
+    width: 100%;
+    z-index: -1;
+}
+
+.header .logo img {
+    width: 200px;
+}
+
+
+/*导航最外层
+记住：如果一个块级元素没有设置高度：height:auto (根据内容的高度来确定)。 100%继承第一级父，
+记住：如果一个块级元素没有width就是100%，
+记住：如果一个内联元素没有width：auto (根据内容的宽度来确定)。 ，*/
+
+.navbox {
+    border-top: 1px solid #d2d2d2;
+    border-bottom: 2px solid #d2d2d2;
+}
+
+
+/*控制li>a*/
+
+.navbox .navlist {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.navbox .navlist li a {
+    display: block;
+    height: 56px;
+    line-height: 56px;
+    padding: 0 10px;
+    color: #5a5a5a
+}
+
+.navbox .navlist li:hover a {
+    background: #999;
+    color: #fff;
+}
+
+
+/*checkbox隐藏，否则不美观*/
+
+.navbox .pug-nav-toggle {
+    display: none;
+}
+
+
+/* 1：借助：label +checkbox 触发checked事件行为 
+   2：使用css3的 + 平级选择器的概念。从而达到在点击图标的时候，其实也就是label标签的时候触发:checked事件
+*/
+
+.navbox .pug-nav-toggle:checked+.navlist {
+    /*主要这里千万不能是block而是flex ，因为内部的元素是通过弹性flex来控制的。*/
+    display: flex;
+}
+
+
+/*控制图标的折叠图标的居中问题也就是label*/
+
+.navbox .navbar {
+    height: 56px;
+    justify-content: center;
+    align-items: center;
+    display: none;
+}
+
+
+/*响应式的处理了 pc优先*/
+
+@media screen and (max-width:700px) {
+    /*显示折叠图标*/
+    .navbox .navbar {
+        display: flex;
+    }
+    /*同时把ul的navlist全部隐藏起来*/
+    .navbox .navlist {
+        display: none;
+    }
+    .navbox .pug-nav-toggle:checked+.navlist {
+        /*主要这里千万不能是block而是flex ，因为内部的元素是通过弹性flex来控制的。*/
+        display: block;
+        position: fixed;
+        background: #fff;
+        width: 100%;
+        top: 259px;
+        left: 0;
+    }
+}
+
+
+/*侧边栏*/
+
+.pug-wrapper .article-items {
+    background: #fff;
+    padding: 35px;
+}
+
+.pug-wrapper .article-items .title {
+    font-size: 18px;
+    font-weight: 600;
+    color：#5a5a5a;
+}
+
+.pug-wrapper .article-items .title:hover a {
+    color: #ff9800
+}
+
+.pug-wrapper .article-items .info {
+    font-size: 12px;
+    color: #999;
+    padding: 10px 0;
+    transform: scale(0.9);
+}
+
+.pug-wrapper .article-items .imgbox {
+    padding: 5px 0;
+}
+
+.pug-wrapper .article-items .desc {
+    line-height: 22px;
+}
+
+.pug-wrapper .article-items .btnbox {
+    border-bottom: 1px solid #dedede;
+    padding: 20px 0;
+}
+
+.pug-wrapper .article-items .btn {
+    border: none;
+    display: inline-block;
+    background: #ff9800;
+    color: #fff;
+    padding: 6px 28px;
+    border-radius: 6px;
+    margin: 10px 0 0;
+}
+
+.pug-wrapper .article-items .tags {
+    padding-top: 20px;
+}
+
+.pug-wrapper .article-items .tag {
+    padding: 2px 10px;
+    background: #dedede;
+    color: #333;
+    border-radius: 16px;
+}
+
+.pug-box-card .btnbox .btn {
+    border: none;
+    display: block;
+    background: #ff9800;
+    color: #fff;
+    padding: 10px 28px;
+    border-radius: 6px;
+    margin: 10px 0 0;
+    text-align: center;
+}
+
+.pug-box-card .tag {
+    padding: 2px 10px;
+    background: #dedede;
+    color: #333;
+    display: inline-block;
+    border-radius: 4px;
+    margin: 4px;
+}

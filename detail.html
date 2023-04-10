@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>文章明细</title>
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/detail.css">
+
+    <style>
+        .pug-slide {
+            display: flex;
+            align-items: center;
+        }
+        
+        .pug-slide-nav {
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+            text-align: center;
+        }
+        
+        .pug-slide-nav a {
+            display: block;
+            padding: 10px 0;
+            color: #f9f9f9;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .pug-slide-nav li {
+            position: relative;
+        }
+        
+        .pug-slide-nav li::after {
+            content: "";
+            display: block;
+            background: transparent;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 100%;
+            z-index: 1;
+            padding-right: 0px;
+            border-top-right-radius: 8px;
+            border-bottom-right-radius: 8px;
+            transition: all 300ms;
+        }
+        
+        .pug-slide-nav li:hover a {
+            color: #333;
+        }
+        
+        .pug-slide-nav li:hover::after {
+            background: palegoldenrod;
+            padding-right: 8px;
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="pug-container">
+        <div class="pug-content">
+            <div class="pug-wrapper">
+                <div class="pug-tit">
+                    <h1>使用 Phonegap + Cordova 搭建混合开发平台</h1>
+                </div>
+                <div class="article-meta clearfix">
+                    <a class="article-date fl" href="https://sanonz.github.io/2020/make-hybrid-platform-cordova/index.html"><i class="icon-calendar vm"></i> <time class="vm" datetime="2020-06-10T22:20:53.000Z" itemprop="datePublished">2020-06-11</time></a>
+                    <div class="article-tag-list fl"><i class="icon-tag vm"></i> <a class="article-tag-link" href="/tags/Cordov/" rel="tag">Cordov</a>, <a class="article-tag-link" href="/tags/Phonegap/" rel="tag">Phonegap</a></div>
+                </div>
+                <div class="pug-imgbox mt20">
+                    <img src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fp2.itc.cn%2Fimages01%2F20200826%2F2c47df04fb88434485be3441feb6f126.jpeg&refer=http%3A%2F%2Fp2.itc.cn&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1656595555&t=8e57182377833ab8328dbda48ef607db"
+                        alt="">
+                </div>
+                <div class="pug-article-section">
+
+                    <blockquote>
+                        使用 Cordova 工具，把 HTML5 打包为 IOS 及 Android 等应用，Cordova 提供了一组设备相关的 API，通过这组 API，移动应用能够用 JavaScript 访问原生的设备功能，如摄像头、麦克风等。Cordova 支持多个操作系统，例如：ios、android、brower、electron、oxs、windows。
+                    </blockquote>
+                    <h2>介绍</h2>
+                    <p>使用 Cordova 工具，把 HTML5 打包为 IOS 及 Android 等应用，Cordova 提供了一组设备相关的 API，通过这组 API，移动应用能够用 JavaScript 访问原生的设备功能，如摄像头、麦克风等。Cordova 支持多个操作系统，例如：ios、android、brower、electron、oxs、windows。</p>
+                    <h2>作者所使用的环境</h2>
+                    <ul>
+                        <li>
+                            macOS — High Sierra 10.15.5
+                            <ul>
+                                <li>xcode — v11.5.0</li>
+                                <li>Android Studio — v4.0.0</li>
+                                <li>Node.js — v14.2.0</li>
+                                <li>Phonegap — v9.0.0</li>
+                                <li>Apache Cordova — v9.0.0</li>
+                            </ul>
+                        </li>
+                        <li>xcode — v11.5.0</li>
+                        <li>Android Studio — v4.0.0</li>
+                        <li>Node.js — v14.2.0</li>
+                        <li>Phonegap — v9.0.0</li>
+                        <li>Apache Cordova — v9.0.0</li>
+                    </ul>
+
+                    <h2>安装依赖</h2>
+                    <pre>
+                        <code>
+# Java
+export JAVA_HOME=${HOME}/Library/Java/JavaVirtualMachines/corretto-1.8.0_312/Contents/Home
+# Gradle
+export PATH=${PATH}:${HOME}/.gradle/wrapper/dists/gradle-6.4-bin/aj6cyggqps6mdbpl6cfppfwqk/gradle-6.4/bin
+# Android
+export ANDROID_SDK_ROOT=${HOME}/Library/Android/sdk
+export PATH=${PATH}:${JAVA_HOME}/bin:${ANDROID_SDK_ROOT}/emulator:${ANDROID_SDK_ROOT}/platform-tools:${ANDROID_SDK_ROOT}/tools
+                        </code>
+                    </pre>
+
+
+                    <h2>小结</h2>
+                    <p>至此结束，感谢阅读。 </p>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <link rel="stylesheet" href=js/highlight/styles/rainbow.min.css ">
+    <script src="js/highlight/highlight.min.js "></script>
+    <script>
+        hljs.initHighlightingOnLoad();
+    </script>
+</body>
+
+</html>

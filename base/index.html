@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./iconfont.css">
+    <link rel="stylesheet" href="./reset.css">
+    <link rel="stylesheet" href="./pugui.css">
+    <style>
+        body {
+            background: #f6f6f6;
+        }
+        
+        .header {}
+        
+        .header .logo {
+            height: 200px;
+            background: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .header .logo img {
+            width: 200px;
+        }
+        /*导航最外层*/
+        /*记住：如果一个块级元素没有设置高度：height:auto (根据内容的高度来确定)。 100%继承第一级父，*/
+        /*记住：如果一个块级元素没有width就是100%，*/
+        /*记住：如果一个内联元素没有width：auto (根据内容的宽度来确定)。 ，*/
+        
+        .navbox {
+            border-top: 1px solid #d2d2d2;
+            border-bottom: 2px solid #d2d2d2;
+        }
+        /*控制li>a*/
+        
+        .navbox .navlist {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .navbox .navlist li a {
+            display: block;
+            height: 56px;
+            line-height: 56px;
+            padding: 0 10px;
+            color: #5a5a5a
+        }
+        
+        .navbox .navlist li:hover a {
+            background: #999;
+            color: #fff;
+        }
+        /*checkbox隐藏，否则不美观*/
+        
+        .navbox .pug-nav-toggle {
+            display: none;
+        }
+        /* 1：借助：label +checkbox 触发checked事件行为 
+           2：使用css3的 + 平级选择器的概念。从而达到在点击图标的时候，其实也就是label标签的时候触发:checked事件
+        */
+        
+        .navbox .pug-nav-toggle:checked+.navlist {
+            /*主要这里千万不能是block而是flex ，因为内部的元素是通过弹性flex来控制的。*/
+            display: flex;
+        }
+        /*控制图标的折叠图标的居中问题也就是label*/
+        
+        .navbox .navbar {
+            height: 56px;
+            justify-content: center;
+            align-items: center;
+            display: none;
+        }
+        /*响应式的处理了 pc优先*/
+        
+        @media screen and (max-width:700px) {
+            /*显示折叠图标*/
+            .navbox .navbar {
+                display: flex;
+            }
+            /*同时把ul的navlist全部隐藏起来*/
+            .navbox .navlist {
+                display: none;
+            }
+            .navbox .pug-nav-toggle:checked+.navlist {
+                /*主要这里千万不能是block而是flex ，因为内部的元素是通过弹性flex来控制的。*/
+                display: block;
+            }
+        }
+        
+        .article {
+            padding: 0 15px;
+            max-width: var( --container);
+            margin: 0 auto;
+            box-sizing: border-box;
+        }
+        
+        .article-items {
+            margin-top: 20px;
+            background: #fff;
+            padding: 35px;
+            line-height: 1.5;
+        }
+        
+        .article-items h3 {
+            text-align: center;
+            font-weight: 400;
+            font-size: 32px;
+        }
+        
+        .article-items div {
+            text-align: center;
+            color: #999;
+            font-size: 12px;
+        }
+        
+        .article-items p {
+            font-size: 14px;
+            margin-top: 20px;
+        }
+        
+        .article-items button {
+            border: none;
+            background: #e67e22;
+            color: #fff;
+            padding: 10px;
+            cursor: pointer;
+            margin: 20px 0 0;
+        }
+        
+        .article-items section {
+            border-top: 1px solid #ddd;
+            padding-top: 20px;
+        }
+        
+        .article-items section a {
+            color: inherit;
+            padding: 0 5px;
+        }
+        
+        .main-aside {
+            background: #fff;
+            padding: 30px;
+            margin-top: 20px;
+        }
+        
+        .main-aside h3 {
+            font-size: 20px;
+            font-weight: 400;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #d2d2d2;
+            position: relative;
+        }
+        
+        .main-aside h3::after {
+            content: "";
+            position: absolute;
+            width: 90px;
+            height: 2px;
+            background: red;
+            left: 0;
+            bottom: -1px;
+        }
+        
+        .main-aside p {
+            margin-top: 20px;
+        }
+        
+        .main-aside button {
+            border: none;
+            background: #e67e22;
+            color: #fff;
+            padding: 10px;
+            cursor: pointer;
+            margin: 20px 0 0;
+            width: 100%;
+        }
+        
+        .main-aside a {
+            display: inline-block;
+            border: 1px solid #d2d2d2;
+            padding: 5px 10px;
+            margin: 5px 6px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <!--Logo-->
+        <div class="logo">
+            <img src="https://img10.360buyimg.com/img/jfs/t1/199487/20/23852/33747/62862238E18f45301/a50ec1c60e6aad22.jpg" alt="">
+        </div>
+    </div>
+
+
+    <div class="navbox">
+
+        <div class="navbar">
+            <label for="nav-toggle">
+                <i class="iconfont icon-zhedie"></i>
+           </label>
+        </div>
+
+        <input type="checkbox" class="pug-nav-toggle" id="nav-toggle">
+        <!--导航-->
+        <ul class="navlist">
+            <li>
+                <a href="">首页</a>
+            </li>
+            <li>
+                <a href="">课程</a>
+            </li>
+            <li>
+                <a href="">相册</a>
+            </li>
+            <li>
+                <a href="">论文</a>
+            </li>
+            <li>
+                <a href="">其他课程</a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="article row gap20">
+        <div class="col-lg-8 row gap20">
+            <div class="article-items col-xl-6">
+                <h3>苹果用 3 分钟，正式宣战新行业</h3>
+                <div>
+                    <span>出品 | 虎嗅汽车组</span>
+                    <span>作者 | 张博文</span>
+                    <span>头图 | 苹果官网</span>
+                </div>
+                <p>
+                    WWDC ，Worldwide Developers Conference 苹果全球开发者大会，往年，抽签买到门票的开发者们在这个时间齐聚一堂，用一周的时间探讨如何用软件构建苹果的硬件生态，或者说得更加程序员文化一些 —— 用软件改变世界。 疫情来到第三年，苹果依然在全球范围内用极高质量的线上视频发布会，来呈现 WWDC 这场维持一周的程序员盛会的开幕 Keynote。 但与前两年不同的是，少数美国本土的媒体与开发者， 有机会在 Apple Park 享受六月份的加州阳光，与苹果的 CEO 库克坐在一起，共同线下观看视频。
+                </p>
+                <button>阅读全文</button>
+                <section>
+                    标签：
+                    <a href="#">客户端</a>
+                    <a href="#">Android</a>
+                </section>
+            </div>
+            <div class="article-items col-xl-6">
+                <h3>苹果用 3 分钟，正式宣战新行业</h3>
+                <div>
+                    <span>出品 | 虎嗅汽车组</span>
+                    <span>作者 | 张博文</span>
+                    <span>头图 | 苹果官网</span>
+                </div>
+                <p>
+                    WWDC ，Worldwide Developers Conference 苹果全球开发者大会，往年，抽签买到门票的开发者们在这个时间齐聚一堂，用一周的时间探讨如何用软件构建苹果的硬件生态，或者说得更加程序员文化一些 —— 用软件改变世界。 疫情来到第三年，苹果依然在全球范围内用极高质量的线上视频发布会，来呈现 WWDC 这场维持一周的程序员盛会的开幕 Keynote。 但与前两年不同的是，少数美国本土的媒体与开发者， 有机会在 Apple Park 享受六月份的加州阳光，与苹果的 CEO 库克坐在一起，共同线下观看视频。
+                </p>
+                <button>阅读全文</button>
+                <section>
+                    标签：
+                    <a href="#">客户端</a>
+                    <a href="#">Android</a>
+                </section>
+            </div>
+            <div class="article-items col-xl-6">
+                <h3>苹果用 3 分钟，正式宣战新行业</h3>
+                <div>
+                    <span>出品 | 虎嗅汽车组</span>
+                    <span>作者 | 张博文</span>
+                    <span>头图 | 苹果官网</span>
+                </div>
+                <p>
+                    WWDC ，Worldwide Developers Conference 苹果全球开发者大会，往年，抽签买到门票的开发者们在这个时间齐聚一堂，用一周的时间探讨如何用软件构建苹果的硬件生态，或者说得更加程序员文化一些 —— 用软件改变世界。 疫情来到第三年，苹果依然在全球范围内用极高质量的线上视频发布会，来呈现 WWDC 这场维持一周的程序员盛会的开幕 Keynote。 但与前两年不同的是，少数美国本土的媒体与开发者， 有机会在 Apple Park 享受六月份的加州阳光，与苹果的 CEO 库克坐在一起，共同线下观看视频。
+                </p>
+                <button>阅读全文</button>
+                <section>
+                    标签：
+                    <a href="#">客户端</a>
+                    <a href="#">Android</a>
+                </section>
+            </div>
+            <div class="article-items col-xl-6">
+                <h3>苹果用 3 分钟，正式宣战新行业</h3>
+                <div>
+                    <span>出品 | 虎嗅汽车组</span>
+                    <span>作者 | 张博文</span>
+                    <span>头图 | 苹果官网</span>
+                </div>
+                <p>
+                    WWDC ，Worldwide Developers Conference 苹果全球开发者大会，往年，抽签买到门票的开发者们在这个时间齐聚一堂，用一周的时间探讨如何用软件构建苹果的硬件生态，或者说得更加程序员文化一些 —— 用软件改变世界。 疫情来到第三年，苹果依然在全球范围内用极高质量的线上视频发布会，来呈现 WWDC 这场维持一周的程序员盛会的开幕 Keynote。 但与前两年不同的是，少数美国本土的媒体与开发者， 有机会在 Apple Park 享受六月份的加州阳光，与苹果的 CEO 库克坐在一起，共同线下观看视频。
+                </p>
+                <button>阅读全文</button>
+                <section>
+                    标签：
+                    <a href="#">客户端</a>
+                    <a href="#">Android</a>
+                </section>
+            </div>
+            <div class="article-items col-lg-4 col-xl-6">
+                <h3>苹果用 3 分钟，正式宣战新行业</h3>
+                <div>
+                    <span>出品 | 虎嗅汽车组</span>
+                    <span>作者 | 张博文</span>
+                    <span>头图 | 苹果官网</span>
+                </div>
+                <p>
+                    WWDC ，Worldwide Developers Conference 苹果全球开发者大会，往年，抽签买到门票的开发者们在这个时间齐聚一堂，用一周的时间探讨如何用软件构建苹果的硬件生态，或者说得更加程序员文化一些 —— 用软件改变世界。 疫情来到第三年，苹果依然在全球范围内用极高质量的线上视频发布会，来呈现 WWDC 这场维持一周的程序员盛会的开幕 Keynote。 但与前两年不同的是，少数美国本土的媒体与开发者， 有机会在 Apple Park 享受六月份的加州阳光，与苹果的 CEO 库克坐在一起，共同线下观看视频。
+                </p>
+                <button>阅读全文</button>
+                <section>
+                    标签：
+                    <a href="#">客户端</a>
+                    <a href="#">Android</a>
+                </section>
+            </div>
+        </div>
+
+        <div class="col-lg-4">
+            <div class="main-aside">
+                <h3>声明</h3>
+                <p> WWDC ，Worldwide Developers Conference 苹果全球开发者大会，往年，抽签买到门票的开发者们在这个时间齐聚一堂</p>
+            </div>
+            <div class="main-aside">
+                <h3>下载</h3>
+                <button>下载</button>
+            </div>
+            <div class="main-aside">
+                <h3>标签云</h3>
+                <p>
+                    <a href="">Java</a>
+                    <a href="">Javascript</a>
+                    <a href="">PHP</a>
+                    <a href="">CSS</a>
+                    <a href="">CSS3</a>
+                    <a href="">HTML</a>
+                    <a href="">HTML5</a>
+                    <a href="">KONG</a>
+                    <a href="">Nginx</a>
+                    <a href="">客户端</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        .footer {
+            background: #202020;
+            margin: 20px 0 0;
+            padding: 20px;
+        }
+        
+        .footer-wrapper {
+            width: var(--container);
+            margin: 0 auto;
+        }
+        
+        .footer-items {
+            padding-top: 20px;
+        }
+        
+        .footer-items h3 {
+            color: #fff;
+            font-size: 20px;
+            font-weight: 400;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #333;
+            position: relative;
+        }
+        
+        .footer-items h3::after {
+            content: "";
+            position: absolute;
+            width: 90px;
+            height: 2px;
+            background: red;
+            left: 0;
+            bottom: -1px;
+        }
+        
+        .footer-items a {
+            display: inline-block;
+            padding: 5px 10px 5px 0;
+            margin: 5px 6px;
+            color: #999;
+        }
+        
+        .copyright {
+            background: #111;
+            color: #555;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 80px;
+        }
+    </style>
+    <div class="footer">
+        <div class="footer-wrapper row gap30">
+            <div class="footer-items col-lg-4">
+                <h3>友链</h3>
+                <a href="">Java</a>
+                <a href="">Javascript</a>
+                <a href="">PHP</a>
+                <a href="">CSS</a>
+                <a href="">CSS3</a>
+                <a href="">HTML</a>
+                <a href="">HTML5</a>
+                <a href="">KONG</a>
+                <a href="">Nginx</a>
+                <a href="">客户端</a>
+            </div>
+            <div class="footer-items col-lg-4">
+                <h3>标签云</h3>
+                <a href="">Java</a>
+                <a href="">Javascript</a>
+                <a href="">PHP</a>
+                <a href="">CSS</a>
+                <a href="">CSS3</a>
+                <a href="">HTML</a>
+                <a href="">HTML5</a>
+                <a href="">KONG</a>
+                <a href="">Nginx</a>
+                <a href="">客户端</a>
+            </div>
+
+            <div class="footer-items col-lg-4">
+                <h3>合作商</h3>
+                <a href="">Java</a>
+                <a href="">KONG</a>
+                <a href="">Nginx</a>
+                <a href="">客户端</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="copyright">Copyright © 虎嗅网 京ICP备12013432号-1 京公网安备 11010502037938号</div>
+</body>
+
+</html>
